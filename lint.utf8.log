@@ -1,0 +1,44 @@
+﻿
+> clearcity@0.1.0 lint
+> eslint
+
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\app\authority\[id]\page.tsx
+  119:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\app\issue\[id]\page.tsx
+  42:17  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\app\map\page.tsx
+  162:29  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\app\profile\page.tsx
+  76:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\app\report\page.tsx
+  140:33  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+  325:33  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\components\IssueCard.tsx
+  45:21  warning  Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` or a custom image loader to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\components\ThemeToggle.tsx
+  12:13  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\Nikhi\OneDrive\Desktop\experiment\clearcity\src\components\ThemeToggle.tsx:12:13
+  10 |         const savedTheme = localStorage.getItem('theme') || 'light';
+  11 |         if (savedTheme !== theme) {
+> 12 |             setTheme(savedTheme);
+     |             ^^^^^^^^ Avoid calling setState() directly within an effect
+  13 |         }
+  14 |         document.documentElement.classList.remove('dark-theme', 'light-theme');
+  15 |         document.documentElement.classList.add(`${savedTheme}-theme`);  react-hooks/set-state-in-effect
+
+Γ£û 8 problems (1 error, 7 warnings)
+

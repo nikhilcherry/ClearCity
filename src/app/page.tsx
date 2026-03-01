@@ -1,66 +1,81 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
 
-export default function Home() {
+import { useState } from 'react';
+import { SlidersHorizontal } from 'lucide-react';
+import { issues, categories } from '@/data/dummy-data';
+import IssueCard from '@/components/IssueCard';
+import BottomNav from '@/components/BottomNav';
+
+export default function FeedPage() {
+  const [activeFilter, setActiveFilter] = useState('all');
+
+  const filteredIssues = activeFilter === 'all'
+    ? issues
+    : issues.filter(i => i.category === activeFilter);
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <div className="page-content">
+      <header className="app-header">
+        <div className="header-row">
+          <div>
+            <h1>Clear<span>City</span></h1>
+            <p className="header-subtitle">Civic Issue Tracker</p>
+          </div>
+          <button
+            style={{
+              width: 36,
+              height: 36,
+              borderRadius: 'var(--radius-lg)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--color-text-secondary)',
+              background: 'var(--color-bg)',
+            }}
+            aria-label="Filter options"
           >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <SlidersHorizontal size={18} />
+          </button>
         </div>
-      </main>
+      </header>
+
+      <div className="feed-container">
+        <div className="feed-filters">
+          <button
+            className={`filter-chip${activeFilter === 'all' ? ' active' : ''}`}
+            onClick={() => setActiveFilter('all')}
+          >
+            All Issues
+          </button>
+          {categories.map(cat => (
+            <button
+              key={cat.key}
+              className={`filter-chip${activeFilter === cat.key ? ' active' : ''}`}
+              onClick={() => setActiveFilter(cat.key)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {filteredIssues.map(issue => (
+          <IssueCard key={issue.id} issue={issue} />
+        ))}
+
+        {filteredIssues.length === 0 && (
+          <div style={{
+            textAlign: 'center',
+            padding: 'var(--space-12) var(--space-4)',
+            color: 'var(--color-text-tertiary)',
+          }}>
+            <p style={{ fontSize: 'var(--font-size-sm)', fontWeight: 500 }}>
+              No issues found in this category.
+            </p>
+          </div>
+        )}
+      </div>
+
+      <BottomNav />
     </div>
   );
 }

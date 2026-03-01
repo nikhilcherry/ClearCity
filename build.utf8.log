@@ -1,0 +1,30 @@
+﻿
+> clearcity@0.1.0 build
+> next build
+
+Γû▓ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 1562.8ms
+  Running TypeScript ...
+  Collecting page data using 15 workers ...
+  Generating static pages using 15 workers (0/7) ...
+  Generating static pages using 15 workers (1/7) 
+  Generating static pages using 15 workers (3/7) 
+  Generating static pages using 15 workers (5/7) 
+Γ£ô Generating static pages using 15 workers (7/7) in 530.0ms
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£ ╞Æ /authority/[id]
+Γö£ ╞Æ /issue/[id]
+Γö£ Γùï /map
+Γö£ Γùï /profile
+Γöö Γùï /report
+
+
+Γùï  (Static)   prerendered as static content
+╞Æ  (Dynamic)  server-rendered on demand
+
